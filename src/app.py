@@ -2,10 +2,19 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-import seaborn as sns
 import matplotlib.pyplot as plt
+import seaborn as sns
 from wordcloud import WordCloud
 import os
+
+# Set matplotlib style
+plt.style.use('seaborn-v0_8')  # Use the updated style name
+sns.set_theme(style="whitegrid")
+
+# Configure matplotlib
+plt.rcParams['figure.figsize'] = [10, 6]
+plt.rcParams['figure.dpi'] = 100
+plt.rcParams['font.size'] = 12
 
 # Set page config
 st.set_page_config(
