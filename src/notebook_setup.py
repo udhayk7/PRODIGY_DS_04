@@ -1,4 +1,4 @@
-import ssl
+import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -8,15 +8,10 @@ import nltk
 from wordcloud import WordCloud
 import plotly.graph_objects as go
 
-# Configure SSL for NLTK downloads
-ssl._create_default_https_context = ssl._create_unverified_context
-
-# Download required NLTK data
-try:
-    nltk.download('punkt', quiet=True)
-    nltk.download('stopwords', quiet=True)
-except Exception as e:
-    print(f"Warning: NLTK data download failed: {str(e)}")
+# Set NLTK data path to a local directory in the project
+nltk_data_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'nltk_data')
+os.makedirs(nltk_data_path, exist_ok=True)
+nltk.data.path.append(nltk_data_path)
 
 # Set up the plotting style
 plt.style.use('seaborn-v0_8-whitegrid')
