@@ -11,12 +11,22 @@ import plotly.graph_objects as go
 nltk.download('punkt')
 nltk.download('stopwords')
 
-# Set up the plotting style correctly
-plt.style.use('seaborn-v0_8')  # Use the updated seaborn style name
-sns.set_theme(style="whitegrid")  # Set seaborn theme
-sns.set_palette("husl")  # Set color palette
+# Set up the plotting style
+sns.set_style("whitegrid")
+sns.set_context("notebook", font_scale=1.2)
+sns.set_palette("husl")
 
-# Configure matplotlib for better visualization
-plt.rcParams['figure.figsize'] = [10, 6]
-plt.rcParams['figure.dpi'] = 100
-plt.rcParams['font.size'] = 12
+# Configure matplotlib
+plt.rcParams.update({
+    'figure.figsize': [10, 6],
+    'figure.dpi': 100,
+    'font.size': 12,
+    'axes.titlesize': 14,
+    'axes.labelsize': 12,
+    'xtick.labelsize': 10,
+    'ytick.labelsize': 10,
+    'legend.fontsize': 10,
+    'figure.titlesize': 16,
+    'grid.linestyle': '--',
+    'grid.alpha': 0.6
+})
