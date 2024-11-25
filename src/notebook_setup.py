@@ -1,4 +1,6 @@
 import os
+import ssl
+import certifi
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -7,11 +9,40 @@ from textblob import TextBlob
 import nltk
 from wordcloud import WordCloud
 import plotly.graph_objects as go
+from pathlib import Path
 
-# Set NLTK data path to a local directory in the project
-nltk_data_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'nltk_data')
-os.makedirs(nltk_data_path, exist_ok=True)
-nltk.data.path.append(nltk_data_path)
+def configure_nltk():
+    """Configure NLTK with proper SSL and data directory setup"""
+    # Set up project-specific NLTK data directory
+    current_dir = Path(__file__).parent
+    project_root = current_dir.parent
+    nltk_data_dir = project_root / 'nltk_data'
+    os.makedirs(nltk_data_dir, exist_ok=True)
+    
+    # Add our directory to NLTK's search path (at the beginning)
+    nltk.data.path.insert(0, str(nltk_data_dir))
+    
+    try:
+        # Configure SSL with certifi certificates
+        ssl_context = ssl.create_default_context(cafile=certifi.where())
+        ssl._create_default_https_context = lambda: ssl_context
+    except Exception as e:
+        print(f"Warning: Using unverified SSL context due to: {e}")
+        ssl._create_default_https_context = ssl._create_unverified_context
+    
+    # Download required NLTK data if not present
+    try:
+        nltk.data.find('tokenizers/punkt')
+    except LookupError:
+        nltk.download('punkt', download_dir=str(nltk_data_dir))
+    
+    try:
+        nltk.data.find('corpora/stopwords')
+    except LookupError:
+        nltk.download('stopwords', download_dir=str(nltk_data_dir))
+
+# Configure NLTK before anything else
+configure_nltk()
 
 # Set up the plotting style
 plt.style.use('seaborn-v0_8-whitegrid')
