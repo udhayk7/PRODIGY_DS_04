@@ -1,0 +1,11 @@
+tweet_id,text,entity,sentiment
+1,"I absolutely love the new iPhone 15 Pro camera features! #Apple",iPhone 15 Pro,positive
+2,"The battery life on this Samsung S24 is disappointing",Samsung S24,negative
+3,"Tesla's autopilot system keeps getting better with each update",Tesla,positive
+4,"Netflix's new show is just okay, nothing special",Netflix,neutral
+5,"Google's AI capabilities are truly revolutionary",Google,positive
+6,"Amazon's customer service has been terrible lately",Amazon,negative
+7,"Microsoft Teams is so much better than Zoom for meetings",Microsoft Teams,positive
+8,"The new MacBook Pro performance is mindblowing! #Apple",MacBook Pro,positive
+9,"Facebook's privacy issues are concerning",Facebook,negative
+10,"SpaceX launch was spectacular to watch!",SpaceX,positive
