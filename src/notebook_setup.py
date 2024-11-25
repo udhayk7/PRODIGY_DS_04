@@ -12,11 +12,13 @@ nltk.download('punkt')
 nltk.download('stopwords')
 
 # Set up the plotting style
-sns.set_style("whitegrid")
+plt.style.use('seaborn-v0_8-whitegrid')
+
+# Additional seaborn configurations
 sns.set_context("notebook", font_scale=1.2)
 sns.set_palette("husl")
 
-# Configure matplotlib
+# Fine-tune the style
 plt.rcParams.update({
     'figure.figsize': [10, 6],
     'figure.dpi': 100,
@@ -27,6 +29,5 @@ plt.rcParams.update({
     'ytick.labelsize': 10,
     'legend.fontsize': 10,
     'figure.titlesize': 16,
-    'grid.linestyle': '--',
     'grid.alpha': 0.6
 })
